@@ -10,6 +10,7 @@ import {
 
 import MenuListItems from "./menuListItems";
 import PlayListItems from "./playlistItems";
+import { usePlaylist } from "../lib/hooks";
 
 const primaryMenu = [
   {
@@ -42,11 +43,8 @@ const secondaryMenu = [
   },
 ];
 
-const playlists = new Array(50)
-  .fill(1)
-  .map((_, i) => <p>{`Playlist ${i + 1}`}</p>);
-
 const Sidebar = () => {
+  const { playlists } = usePlaylist();
   return (
     <Box width="100%" height="100%" bg="black" paddingX="5px">
       <Box paddingY="20px" height="100%">
