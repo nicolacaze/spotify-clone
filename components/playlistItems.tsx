@@ -7,7 +7,10 @@ const PlayListItems = ({ items }) => (
       {items.map((item) => (
         <ListItem key={item.id} paddingX="20px" fontSize="16px">
           <LinkBox color="white">
-            <NextLink href="/" passHref>
+            <NextLink
+              href={{ pathname: "/playlist/[id]", query: { id: item.id } }}
+              passHref
+            >
               <LinkOverlay>{item.name}</LinkOverlay>
             </NextLink>
           </LinkBox>
