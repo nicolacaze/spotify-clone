@@ -1,10 +1,8 @@
-import { FC } from "react";
+import { useReducer } from "react";
 import { Box, Flex } from "@chakra-ui/layout";
 import { Button, Input } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
-import { useReducer } from "react";
-import { useSWRConfig } from "swr";
 import {
   SET_EMAIL,
   SET_PASSWORD,
@@ -47,7 +45,11 @@ const reducer = (state, action) => {
   }
 };
 
-const AuthForm: FC<{ mode: string }> = ({ mode }) => {
+type AuthFormProps = {
+  mode: "signin" | "signup";
+};
+
+const AuthForm = ({ mode }: AuthFormProps) => {
   const [form, dispatch] = useReducer(reducer, initialState);
   const router = useRouter();
 

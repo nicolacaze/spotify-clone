@@ -11,7 +11,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import ReactHowler from "react-howler";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   MdShuffle,
   MdSkipPrevious,
@@ -198,7 +198,7 @@ const Player = ({ songs, activeSong }) => {
               aria-label={["min", "max"]}
               step={0.1}
               min={0}
-              max={duration ? duration.toFixed(2) : 0}
+              max={duration ? (duration.toFixed(2) as unknown as number) : 0}
               onChange={onSeek}
               value={[seek]}
               onChangeStart={() => setIsSeeking(true)}
